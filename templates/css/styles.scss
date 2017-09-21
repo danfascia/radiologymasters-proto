@@ -1,0 +1,333 @@
+/* Variables */
+
+$font-stack: 'Open Sans',sans-serif;
+$base-size: 16px;
+
+$black: #2b2b2f;
+$white: #eeeeee;
+$red: #cf0808;
+$green: #309688;
+$yellow: #F9BB00;
+$blue: #2C75DC;
+
+/* For the media queries */
+$breakpoint: 50em;
+
+/* MIXINS */
+
+@mixin bp($min) {
+  @media screen and(min-width: $min) {
+    @content;
+  }
+}
+/* === */
+
+/* Dead Simple Grid (c) 2015 Vladimir Agafonkin */
+
+.row .row { margin:  0 -1.5em; }
+.col      { padding: 0  1.5em; }
+
+.row:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media only screen { .col {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}}
+
+/* ---------------------------------------------------------
+   HTML5 Bones
+   This stylesheet contains print styling and a section for 
+   you to simply add your own. This is a basic template 
+   after all.
+   --------------------------------------------------------- */
+
+    /* Default link styling */
+
+    a:link { color:$blue; }
+    a:visited { color:darken($blue, 20); }
+    a:hover, a:focus { color: $black; }
+    a:active { color: lighten($blue, 20); }
+    
+    
+    
+/* ---------------------------------------------------------
+   Author's styles
+   ---------------------------------------------------------*/
+    * { 
+      box-sizing: border-box;
+       }
+
+    html {
+      font-size: 1em;
+    }
+
+    body {
+      margin: 0 auto;
+      padding: 0;
+      
+      font-family: $font-stack;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    body.authpage {
+      background-color: $black;
+    }
+
+    /* TYPOGRAPHY from http://type-scale.com/ */
+
+    p {margin-bottom: 1.3em;}
+
+    h1, h2, h3, h4 {
+      margin: 0 0 0.5em; /* important to have 0 top margin as it screws up elements flush alignment vertically */
+      font-weight: inherit;
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 2.441em;
+    }
+    h2 {font-size: 1.953em;}
+    h3 {font-size: 1.563em;}
+    h4 {font-size: 1.25em;}
+    small, .font_small {font-size: 0.8em;}
+
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      
+      @include bp(50em) {
+        padding: 0 $base-size;
+        max-width: 1330px;
+      }
+    }
+    
+    header {
+      background-color: $black;
+      color: $white;
+      padding: 1em 0;
+      margin: 0;
+    }
+
+    h1#logo {
+      display: inline-block;
+
+      font-family: 'Montserrat', sans-serif;
+      font-size: $base-size + 2px;
+      margin: 0;
+      margin-left: 8px;
+
+      @include bp(50em) {
+        font-size: 32px;
+        line-height: 1.5em;
+      }
+    }
+
+    h1#logo img {
+      float: left;
+      margin-top: 0;
+      margin-right: 4px;
+      max-width: 32px;
+
+      @include bp(50em) {
+      margin-top: 8px;
+      margin-right: $base-size;
+      max-width: 100%;
+      }
+    }
+
+    h1#logo .strapline {
+      display: none;
+      @include bp(50em) {
+        display: block;
+      }
+
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      letter-spacing: 0.7px;
+      opacity: 0.66;
+      margin-top: -10px;
+      line-height: 1em;
+    }
+
+    nav.primary-navigation {
+      background-color: darken($black, 6%);
+    }
+
+    nav.primary-navigation ul {
+      margin: 0;
+    }
+
+    nav.primary-navigation ul > li {
+      display: inline-block;
+    }
+
+    nav.primary-navigation ul > li a {
+      display: inline-block;
+      color: $white;
+      text-decoration: none;
+      padding: ($base-size / 1.33) ($base-size / 2);
+
+      font-size: $base-size;
+    }
+
+    nav.primary-navigation ul > li a:hover {
+      background-color: $black;
+    }
+
+    .user-meta {
+      display: block;
+      float: right;
+      margin-right: 8px;
+      color: $white;
+    }
+
+    .user-meta a {
+      display: inline-block;
+      font-size: 0.85em;
+      padding: 2px;
+
+      color: $white;
+      text-decoration: none;
+
+      @include bp(32em) {
+        font-size: $base-size;
+        margin-top: 16px;
+      }
+    }
+
+    
+    main {
+      background-color: #efedec;
+      padding-top: $base-size *2;
+      padding-bottom: $base-size *2;
+    }
+
+    .single article {
+      background-color: #fafafa;
+      margin-bottom: $base-size;
+     
+      padding-left: 0;
+      padding-right: 0;
+
+      @include bp(50em) {
+        width: 73%;
+        margin-right: 2%;
+      }
+    }
+
+    .single article p, 
+    .single article h1,
+    .single article h2 {
+      padding: $base-size $base-size;
+    }
+
+    .single article video {
+      background-color: $black;
+      width: 100%;
+    }
+
+    .single aside {
+      background-color: #fafafa;
+      padding: ($base-size / 2) $base-size;
+      border-bottom: 3px solid lighten($black, 60%);
+
+      @include bp(50em) {
+        width: 25%;
+      }
+    }
+
+    .authpage section#autharea {
+      max-width: 960px;
+      margin: 0 auto;
+      background-color: $white;
+      padding: $base-size;
+
+      @include bp(50em) {
+        border-radius: $base-size / 4 ;
+        margin-top: $base-size * 4;
+        min-height: 400px;
+      }
+    }
+
+    footer {
+      padding: 1em 0;
+
+      background-color: lighten($black, 6%);
+      border-bottom: ( 4 * $base-size) solid $black;
+      color: darken($white, 33%);
+    }
+
+    footer h4 {
+      padding: 0 0 8px 0;
+      border-bottom: 2px solid darken($white, 33%);
+    }
+
+    footer .col {
+      @include bp(50em) {
+        width: 33%;
+      }
+    }
+
+
+
+/* ---------------------------------------------------------
+   Buttons
+   ---------------------------------------------------------*/
+
+   a.button {
+    display: inline-block;
+    padding: ($base-size / 2) $base-size;
+    text-decoration: none;
+    color: $black;
+   }
+
+   a.button:hover {
+    background-color: lighten($black, 75%);
+    color: $white;
+   }
+
+    
+/* ---------------------------------------------------------
+   Print styles
+   ---------------------------------------------------------*/
+@media print {
+    * {
+        color:#000 !important;
+        box-shadow:none !important;
+        text-shadow:none !important;
+        background:transparent !important;
+    }
+    html { background-color:#fff; }
+    /* Hide navigation */
+    nav { display:none; }
+
+    /* Show link destinations in brackets after the link text */
+    a[href]:after { content: " (" attr(href) ") "; }
+    a[href] {
+        font-weight:bold;
+        text-decoration:underline;
+        color:#06c;
+        border:none;
+    }
+    /* Don't show link destinations for JavaScript or internal links */ 
+    a[href^="javascript:"]:after, a[href^="#"]:after { content:""; }
+    
+    /* Show abbr title value in brackets after the text */
+    abbr[title]:after { content: " (" attr(title) ")"; }
+
+    figure { 
+        margin-bottom:1em; 
+        overflow:hidden;
+    }
+
+    figure img { border:1px solid #000; }
+}
