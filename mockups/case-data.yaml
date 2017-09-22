@@ -1,0 +1,37 @@
+video:
+  id: string
+
+restriction:
+  type: boolean
+  input: radio
+    values: "Free", "Premium"
+
+course:
+
+date:
+  type: datetime
+  input: timestamp from upload
+
+title:
+  type: string
+  input: text
+
+description:
+  type: string
+  input: richtext
+
+author:
+  type: string (concat author_firstname + author_lastname)
+  input: lookup based on upload time ID
+
+speciality:
+  type: string
+  input: select
+    multiple: true
+    values: "Gastrointestinal", "Musculoskeletal", "Breast", "Chest", "Cardiovascular", "Paediatric", "Neuro, Head & Neck", "Genitourinary", "Exam Tips"
+    
+complexity:
+   type: string
+   input: select
+   multiple: false
+   values: "Easy", "Medium", "Hard"
