@@ -1,3 +1,5 @@
+/* STYL!*/
+
 /* Variables */
 
 $font-stack: 'Open Sans',sans-serif;
@@ -53,7 +55,53 @@ $breakpoint: 50em;
     a:hover, a:focus { color: $black; }
     a:active { color: lighten($blue, 20); }
     
+/* ---------------------------------------------------------
+   Bad things
+   ---------------------------------------------------------*/
+
+.center {
+  margin: 0 auto;
+}
+
+/* ---------------------------------------------------------
+   Colours
+   ---------------------------------------------------------*/
     
+.bg-red {
+  background-color: $red;
+  color: $white;
+}
+
+.bg-blue {
+  background-color: $blue;
+  color: $white;
+}
+
+.bg-yellow {
+  background-color: $yellow;
+  color: $black;
+}
+
+.bg-black {
+  background-color: $black;
+  color: $white;
+}
+
+.bg-grey {
+  background-color: lighten($black, 50%);
+  color: $white;
+}
+
+.white { color: $white; }
+.bg-white {
+  background-color: $white;
+  color: $black;
+}
+
+.bg-green {
+  background-color: $green;
+  color: $white;
+}
     
 /* ---------------------------------------------------------
    Author's styles
@@ -61,6 +109,10 @@ $breakpoint: 50em;
     * { 
       box-sizing: border-box;
        }
+
+    *:focus {
+      outline: none;
+      }
 
     html {
       font-size: 1em;
@@ -77,6 +129,12 @@ $breakpoint: 50em;
 
     body.authpage {
       background-color: $black;
+      text-align: center;
+      padding-top: 1em;
+
+      @include bp(50em) {
+      padding-top: 4em;
+      }
     }
 
     /* TYPOGRAPHY from http://type-scale.com/ */
@@ -156,6 +214,8 @@ $breakpoint: 50em;
       opacity: 0.66;
       margin-top: -10px;
       line-height: 1em;
+
+      text-align: left;
     }
 
     nav.primary-navigation {
@@ -237,25 +297,113 @@ $breakpoint: 50em;
 
     .single aside {
       background-color: #fafafa;
-      padding: ($base-size / 2) $base-size;
-      border-bottom: 3px solid lighten($black, 60%);
 
       @include bp(50em) {
         width: 25%;
       }
     }
 
-    .authpage section#autharea {
-      max-width: 960px;
+    aside h3,
+    aside h4 {
+      border-bottom: 2px solid lighten($black, 70%);
+      padding-bottom: 4px;
+      padding-top: 1em;
+      color: rgba($black, 0.75);
+    }
+
+    aside .meta {
+      display: block;
+      width: 100%;
+      border-bottom: 1px dotted rgba(0,0,0,0.1);
+      padding: 0.61em 0px;
+      margin-bottom: 4px;
+
+      font-size: 0.9em;
+    }
+
+    aside .meta .title {
+      display: inline-block;
+      font-weight: bold;
+      color: lighten($black, 25%);
+    }
+
+    aside .meta .value,
+    aside .meta .value a {
+      display: inline-block;
+      float: right;
+      color: lighten($black, 25%);
+    }
+
+    aside .meta .value a {
+      text-decoration: none;
+    }
+
+    aside .meta .value a:hover { text-decoration: underline; }
+
+    aside .meta .complexity {
+      display: inline-block;
+      float: right;
+    }
+
+    aside .meta .complexity a {
+      opacity: 0.33;
+    }
+
+    aside .meta a.active {
+      opacity: 1;
+    }
+
+    section#autharea {
+      max-width: 600px;
       margin: 0 auto;
       background-color: $white;
-      padding: $base-size;
 
       @include bp(50em) {
         border-radius: $base-size / 4 ;
         margin-top: $base-size * 4;
         min-height: 400px;
       }
+    }
+
+    /* ---------------------------------------------------------
+   Tabs
+   ---------------------------------------------------------*/
+
+    ul.tabs{
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+    }
+    ul.tabs li{
+      background: $blue;
+      color: $white;
+      display: inline-block;
+      padding: $base-size;
+      cursor: pointer;
+      width: 50%;
+      float: right;
+      text-align: center;
+    }
+
+    ul.tabs li.current{
+      background: lighten($blue, 10%);
+      color: $white;
+    }
+
+    .tab-content {
+      display: none;
+      background: $white;
+      text-align: left;
+      padding: $base-size;
+      overflow: hidden;
+    }
+
+    .tab-content h2 {
+      color: lighten($black, 20%);
+    }
+
+    .tab-content.current{
+      display: inherit;
     }
 
     footer {
@@ -278,6 +426,56 @@ $breakpoint: 50em;
     }
 
 
+/* ---------------------------------------------------------
+  Forms
+   ---------------------------------------------------------*/
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.61em;
+  font-size: 1em;
+  margin-bottom: 0.61em;
+  border: none;
+  border-bottom: 2px solid lighten($black, 70%);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom-color: $blue;
+  color: #16a085;
+  transition: 0.2s ease;
+  border-radius: 0;
+}
+
+input[type="submit"] {
+  float: right;
+  margin-top: 10px;
+  padding: $base-size $base-size * 2;
+  width: 100%;
+  background: $blue;
+  border: none;
+  border-radius: 2px;
+  color: $white;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+
 
 /* ---------------------------------------------------------
    Buttons
@@ -287,15 +485,36 @@ $breakpoint: 50em;
     display: inline-block;
     padding: ($base-size / 2) $base-size;
     text-decoration: none;
-    color: $black;
+    opacity: 0.9;
+    color: $white;
+    border-radius: 4px;
+    margin-bottom: $base-size;
    }
 
    a.button:hover {
-    background-color: lighten($black, 75%);
-    color: $white;
+    color: #fafafa;
+    opacity: 1;
    }
 
-    
+   .button.small {
+    font-size: 0.8em;
+    letter-spacing: 0.3px;
+    padding: ($base-size / 4) $base-size / 2;
+   }
+
+   .button.large {
+    font-size: 1.1em;
+    padding: ($base-size) $base-size * 2;
+   }
+
+   .button.fullwidth {
+    width: 100%;
+    border-radius: 0;
+    padding: ($base-size) $base-size * 2;
+    text-align: center;
+    margin-bottom: 0;
+   }
+
 /* ---------------------------------------------------------
    Print styles
    ---------------------------------------------------------*/
