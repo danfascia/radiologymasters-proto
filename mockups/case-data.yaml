@@ -2,11 +2,21 @@ video:
   id: string
 
 restriction:
-  type: boolean
-  input: radio
-    values: "Free", "Premium"
+  type: string
+  input: select
+  multiple: false
+    values: free, restricted
+    capability: 
+      type: string
+      input: select
+      capabilities: "premium", "course_name", "membership_level"
 
 course:
+
+permalink:
+  type: string
+  input: text
+  validation: only allow letters, numbers and -
 
 date:
   type: datetime
@@ -15,6 +25,11 @@ date:
 title:
   type: string
   input: text
+  
+excerpt:
+  type: string(160)
+  input: textarea
+  comment: Populates the meta description
 
 description:
   type: string
